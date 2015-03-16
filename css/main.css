@@ -1,0 +1,61 @@
+@import url(http://fonts.googleapis.com/css?family=Bree+Serif);
+
+body{
+  background: url('../img/bg.png');
+  font-family: 'Bree Serif', serif;
+}
+.box{
+  max-width: 80%;
+  height: auto;
+  margin: 50px auto;
+  border-radius: 5px;
+  background: #f3f3f3;
+  color: #414848;
+	border: 1px solid #fff;
+	border-radius: 5px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+h1{
+	font-weight: 300;
+	font-size: 38px;
+	color: #414848;
+	text-shadow: 1px 1px 0 rgba(256,256,256,1.0);
+}
+.content{
+  background:;
+  width: 100%;
+  height: auto;
+  margin: 10px auto ; /*vertical margin*/
+  padding:;
+  text-align: center;
+}
+.tab{
+  margin : 5px auto; /*veritical margin of table*/
+  text-align:center;
+  font-size: 25px;
+  color: #414848;
+  width: 100%;
+}
+th,tr,td{
+  border: 2px solid black;
+  padding:5px 0;
+  font-weight: 300;
+  text-shadow: 1px 1px 0 rgba(256,256,256,1.0);
+}
+th{
+  background: #6CA85B;
+  text-shadow: 1px 1px 0 #36963E;
+  font-size: 30px;
+}
+
+.one{
+    width: 80%;
+}
+.two{
+    min-width: 13%;
+    
+}
+.three{
+    min-width: 13%;
+}
