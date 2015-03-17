@@ -4,5 +4,5 @@
     <?php include 'menu.php'?>
     <link rel="stylesheet" type="html/css" href="css/main.css" >
 </head>
-    <?php include 'threads.php'?>
+    <?php include 'categoryList.php'?>
 </html>

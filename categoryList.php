@@ -1,5 +1,5 @@
 <html>
-  <head><title>Compare Page</title></head>
+  <head><title>Doctors Forum</title></head>
   <body>
     <div class="box">
       <div class="content">

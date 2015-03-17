@@ -8,8 +8,8 @@
    <div id="wrapper">
       <nav>
         <ul class="menu">
-          <li class="home current"><a href="#"><span>Home</span></a></li>
-          <li><a href="#"><span>Topics</span></a></li>
+          <li class="home current"><a href="index.php"><span>Home</span></a></li>
+          <li><a href="topicList.php"><span>Topics</span></a></li>
           <li><a href="#"><span>recent </span></a>
             <ul class="sub-menu">
               <li><a href="#">Sub-menu 1</a></li>
