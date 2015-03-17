@@ -1,15 +1,14 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700);
-/*line 61 devide by number of menu item.. i.e 5*/
 #wrapper {
   margin: 5px;
 }
 
-/* BEGIN: Общие стили */
 .menu,
 .sub-menu {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  alignment-adjust: central;
 }
 
 .menu li {
@@ -20,11 +19,10 @@
   -moz-transition: background-color .5s;
   -o-transition: background-color .5s;
   -webkit-transition: background-color .5s;
-  /* IE lt 10, Chrome lt 1, Opera lt 11.6, Safari lt 3, FF lt 4, Android lt 2.1 и iOS lt 2.0 не поддерэивают transition. */
 }
 
 .menu li:hover {
-  background-color: #353B41 !important; /* .menu > li.home может иметь больше приоритета. Поэтому. */
+  background-color: #353B41 !important;
 }
 
 .menu a {
@@ -43,39 +41,19 @@
 }
 
 .menu a:hover {
-  /* Защита от простого a:hover. */
   color: #FFF;
 }
-/* END: Общие стили */
 
-/* BEGIN: Главное меню */
 .menu {
-  /* Рекомендуется задать высоту главного меню именно отсюда. */
   height: 60px;
 }
 
 .menu > li {
   float: left;
   height: 100%;
-  width: 15%; /*number of menus are 5 so device by 5 */
-  width: calc((100% - 90px) / 5);
-  /*width: -moz-calc((100% - 90px) / 5);
-  width: -webkit-calc((100% - 90px) / 5);
-   */
+  width: calc((100%) / 6); /*width of each menu elements.. i.e 6 menu elements*/
 }
 
-.menu > li.home {
-  background: #3E454D url(http://s26.postimg.org/qbf4q4j9h/home.png) center no-repeat;
-  width: 90px;
-}
-
-.menu > li.current {
-  background-color: #F2762E !important; /* !important VS .menu li:hover */
-  box-shadow: none !important;
-  -moz-box-shadow: none !important;
-  -webkit-box-shadow: none !important;
-  /* IE lt 9, Chrome lt 1, Opera lt 10.5, Safari lt 3, FF lt 3.5, Android lt 2.1 и iOS lt 2.0 не поддерэивают box-shadow. */
-}
 
 .menu > li:not(:first-child) {
   box-shadow: inset 1px 0 0 0 #272B31, inset 2px 0 0 0 #434A52;
@@ -88,7 +66,7 @@
 }
 
 .menu > li > a > span {
-  left: 0; /* Селектор .menu a выравнивает содержимое по центру, из-за чего span начинается от центра. Исправляем. */
+  left: 0; 
   position: absolute;
   right: 0;
   top: 50%;
@@ -97,11 +75,7 @@
   -moz-transform: translate(0, -50%);
   -o-transform: translate(0, -50%);
   -webkit-transform: translate(0, -50%);
-  /* IE lt 9, Chrome lt 5, Opera lt 10.5, Safari lt 3.1, FF lt 3.5, Android lt 2.1 и iOS lt 2.0 не поддерэивают transform. */
 }
-/* END: Главное меню */
-
-/* BEGIN: Подменю */
 .sub-menu {
   max-height: 0;
   min-width: 100%;
@@ -133,6 +107,5 @@ li:hover > .sub-menu {
 
 .sub-menu li.current a,
 .sub-menu a:hover {
-  color: #F2762E !important; /* !important VS .menu a:hover */
+  color: #F2762E !important;
 }
-/* END: Подменю */
