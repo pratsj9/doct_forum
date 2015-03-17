@@ -1,5 +1,3 @@
-<?php
-?>
 <html>
   <head>
     <link rel="stylesheet" type="html/css" href="css/menu.css" >
