@@ -3,7 +3,7 @@
     
 /*------------------------------------------------------------------------------------------------------  
     This is not a good practice of hardcoding Credentials, when I am uploading code on GitHub..
-    need to find a way to avoid this.. like reading form external source file
+    need to find a way to avoid this.. like reading from external source file
     But php won't allow to access file outside the web directory :( 
 ------------------------------------------------------------------------------------------------------*/
     
@@ -20,7 +20,7 @@
             die("</br> Connection Failed ".$conn->connect_error);
         }
         else{
-           echo "</br> db Connected: ".$username."@".$host.":".$database;
+           //echo "</br> db Connected: ".$username."@".$host.":".$database;
             return $conn;
         }
     }
@@ -76,12 +76,18 @@
    //email address validation
     function emailValidation($your_email){
         if(preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i",$your_email)){
-            echo "</br> valid mail...";
+          //  echo "</br> valid mail...";
             return true;
         }
         else{
-            echo "</br> INvalid mail !!!!";
+            //echo "</br> INvalid mail !!!!";
             return false;
         }
+    }
+    
+    function redirect($url, $statusCode = 303)
+    {
+        header('Location: ' . $url, true, $statusCode);
+        die();
     }
 ?>

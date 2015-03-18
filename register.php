@@ -29,8 +29,10 @@
                         $sql_query = "INSERT INTO `users`(`user_name`, `user_pass`, `user_email`)
                         VALUES ('".$username."','".$password."','".$emailid."')";
                         dbInsert($conn,$sql_query);
-                        $message= "</br> <h1>Welcome ".$username."...</h1></br>";
+                        $message= "</br> <h1>Welcome ".$username."
+                                   </br> Please Login</h1></br>";
                         $conn->close();
+                        redirect("http://localhost/forum/login.php?message=".$message);
                   }
                   else{
                     $message = $message." UserName Already Taken..!";

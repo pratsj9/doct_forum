@@ -1,3 +1,9 @@
+<?php
+  $message = "";
+  if($_SERVER['REQUEST_METHOD']=="GET"){
+    $message = $_GET['message'];
+  }
+?>
 <html>
 <head>
   <?php include 'menu.php'?>
@@ -9,6 +15,8 @@
 <body>
   <div class="box">
     <div class="content">
+      <?php echo $message;?>
+      
       <h1><strong>User Login</strong></h1>
       <input class="field" type="text" name="email" placeholder="email id"><br>
       <input class="field" type="password" name="password" placeholder="password"><br>
