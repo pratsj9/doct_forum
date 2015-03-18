@@ -1,7 +1,47 @@
 <?php
+  
+  include 'include/core.php';
   $message = "";
+  
   if($_SERVER['REQUEST_METHOD']=="GET"){
-    $message = $_GET['message'];
+    if(isset($_GET['message']))
+      $message = $_GET['message'];
+  }
+  
+  if($_SERVER['REQUEST_METHOD']=="POST"){
+    $emailid = trim($_POST['email']);
+    $password = trim($_POST['password']);
+    
+      if(!empty($emailid) && !empty($password)){
+        //echo "</br> Not empty Fields";
+          //----------------------------------        
+          if(emailValidation($emailid)){
+              //echo "</br> Valid email";
+              //------------------------------
+              if(isMailRegistered($emailid)){
+                    //echo "</br> email Registered";
+                    //--------------------------
+                    if(isUserAuthenticated($emailid,$password)){
+                        //$message= "</br> BINGOOOO......";
+                        /*Now we should Redirect to Home Page */
+                      redirect("index.php");
+          
+                    }
+                    else{
+                      $message = "Wrong Password...</br>Please Try Again..!";
+                    }
+              }
+              else{
+              $message = "Dear ".$emailid."</br>Your Account Does Not Exist. Please Register";
+              }
+          }
+          else{
+            $message = "Invalid email";
+          }
+      }
+      else{
+        $message = "All Fields Are REQUIRED..!";
+      }
   }
 ?>
 <html>
@@ -18,9 +58,12 @@
       <?php echo $message;?>
       
       <h1><strong>User Login</strong></h1>
-      <input class="field" type="text" name="email" placeholder="email id"><br>
-      <input class="field" type="password" name="password" placeholder="password"><br>
-      <input class="btn" type="submit" value="Login">  
+      <form method="post"
+            action="<?php echo $_SERVER['PHP_SELF'];?>">
+          <input class="field" type="text" name="email" placeholder="email id"><br>
+          <input class="field" type="password" name="password" placeholder="password"><br>
+          <input class="btn" type="submit" value="Login">
+      </form>
     </div>
   </div>
 </body>

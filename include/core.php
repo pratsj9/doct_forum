@@ -20,17 +20,19 @@
             die("</br> Connection Failed ".$conn->connect_error);
         }
         else{
-           //echo "</br> db Connected: ".$username."@".$host.":".$database;
+          // echo "</br> db Connected: ".$username."@".$host.":".$database;
             return $conn;
         }
     }
     
     function dbInsert($conn, $sql){
         if($conn->query($sql) === TRUE){
-            return ;
+            return true;
         }
-        else
-            echo "</br> Failed: ".$sql."</br>".$conn-error;
+        else{
+            return false;
+            //echo "</br> Failed: ".$sql."</br>".$conn-error;
+        }
     }
     
     function isMailRegistered($your_mail){
@@ -72,6 +74,30 @@
         }
         
     }
+    
+    function isUserAuthenticated($your_email,$your_pass){
+           // $sql_query = "SELECT `user_id`, `user_name`,`user_level` FROM `users`
+            //WHERE `user_email`='rohit.karadkar@gmail.com' & 'user_pass'='pass'";
+            $sql_query = "SELECT * FROM users WHERE user_email='$your_email' and user_pass = '$your_pass'";
+            $conn = dbConnect();
+            $resultSet = $conn->query($sql_query);
+            
+           // echo "</br> Checking ".$your_email.":".$your_pass." with ".$resultSet->num_rows." rows";
+            
+            if($resultSet->num_rows > 0){
+                session_start();
+                while($row = $resultSet->fetch_assoc()){
+                    $_SESSION['user_id'] = $row['user_id'];
+                    
+                    $_SESSION['user_name']= $row['user_name'];
+                    
+                    $_SESSION['user_level']= $row['user_level'];
+                }
+                return true;
+            }
+            $conn->close();
+    
+    }
 /*------------------------------------------------------------------------------------------------------------------------*/
    //email address validation
     function emailValidation($your_email){
@@ -84,7 +110,10 @@
             return false;
         }
     }
-    
+    /*
+     *Redirect to another page..BUT
+     *we should use this when nothing has written to page.. eg. before <html> tag
+    */
     function redirect($url, $statusCode = 303)
     {
         header('Location: ' . $url, true, $statusCode);
