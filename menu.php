@@ -1,6 +1,20 @@
 <?php
+//include 'include/core.php'; it is creating redeclaration... ;(
+
 session_start();
-session_status();
+//session_status();
+    function isSuper(){
+      //
+       if(isset($_SESSION['user_level'])){
+            
+            if($_SESSION['user_level']=="1")
+                return true;
+            else
+                return false;
+        }
+        else
+            return false;
+    }
 ?>
 <html>
   <head>
@@ -30,8 +44,13 @@ session_status();
                     print("<li><a href=\"login.php\">Login</a></li>");
                     print("<li><a href=\"register.php\">Register</a></li>");
                   }
-                  else
+                  else{
+                      if(isSuper()){
+                        //all SupeUser Pages Goes Here....
+                        print("<li><a href=\"createCategory.php\">Create Category</a></li>");
+                      }
                     print("<li><a href=\"logout.php\">Logout</a></li>");
+                  }
               ?>
               
             </ul>

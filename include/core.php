@@ -98,6 +98,14 @@
             $conn->close();
     
     }
+    
+    function makeCategory($cat_name,$cat_description){
+        $sql_query = "INSERT INTO `categories` (`cat_name`, `cat_description`)
+        VALUES ('$cat_name', '$cat_description');";
+        $conn = dbConnect();
+        dbInsert($conn,$sql_query);
+        $conn->close();
+    }
 /*------------------------------------------------------------------------------------------------------------------------*/
    //email address validation
     function emailValidation($your_email){
@@ -118,5 +126,21 @@
     {
         header('Location: ' . $url, true, $statusCode);
         die();
+    }
+    
+    /*isSu() checks if this user is SuperUser Or not ?
+     *it is getting reDeclaration error... in menu.php so Till fix..
+     *Just copy paste the Function Code...if u need
+    */
+    function isSu(){
+        if(isset($_SESSION['user_level'])){
+            
+            if($_SESSION['user_level']=="1")
+                return true;
+            else
+                return false;
+        }
+        else
+            return false;
     }
 ?>
