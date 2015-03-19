@@ -98,6 +98,24 @@
             $conn->close();
     
     }
+    function fetchList($myList,$listId){
+        $sql_query = "";
+        $conn = dbConnect();
+        if($myList=="category" && $listId=="all"){
+            $sql_query = "SELECT * FROM categories";
+            $resultSet = $conn->query($sql_query);
+            if($resultSet->num_rows > 0){
+                while($row = $resultSet->fetch_assoc()){
+                    echo "<tr><td>".$row['cat_name']."</br>
+                          <span class=\"desc\">".$row['cat_description']."</span></td>
+                          <td>2</td> <td>6</td>
+                          </tr>";
+                }
+                $conn->close();
+                return;
+            }
+        }
+    }
     
     function makeCategory($cat_name,$cat_description){
         $sql_query = "INSERT INTO `categories` (`cat_name`, `cat_description`)
