@@ -62,12 +62,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`user_id`, `user_name`, `user_pass`, `user_email`, `user_level`) VALUES
 (17, 'admin', 'root', 'abc@admin.com', 1),
-(16, 'foo', 'pass', 'foo.bar@foo.po', 0),
-(14, 'rohit', 'precious', 'karadkar.rohit@gmail.com', 0),
-(12, 'nikita', 'pass', 'nikita.bongale@foo.bar', 0),
-(11, 'rohan', 'foo', 'rohan.karadkar@gmail.com', 0),
-(10, 'rnztx', 'pass', 'rohit.karadkar@gmail.com', 0),
-(13, 'shreya', 'pass', 'shreya.karadkar@gmail.com', 0);
+(16, 'foo', 'pass', 'foo.bar@foo.po', 0);
 
 --
 -- Indexes for dumped tables
