@@ -134,7 +134,8 @@
             if($resultSet->num_rows > 0){
                     while($row = $resultSet->fetch_assoc()){
                         echo "<tr><td>".$row['topic_title']."</br>
-                        <span class=\"desc\">".$row['topic_description']."</span></td></tr>";
+                        <span class=\"desc\">".$row['topic_description']."</span></td>
+                        <td>".$row['topic_auther']."</td></tr>";
                     }
             }
           //  echo "</br> ".$myList." ".$listId." ".$resultSet->num_rows;
@@ -152,9 +153,12 @@
         dbInsert($conn,$sql_query);
         $conn->close();
     }
-    /*INSERT INTO `forum`.`topics` (`topic_id`, `topic_title`, `topic_description`, `category_id`, `topic_auther`)
-     *VALUES (NULL, 'this g', 'this ia g', '8', 'abc');
-    */
+    // get count of post and comments
+    function getCount($from, $id){
+        /*select count(topic_id) as total from topics where category_id = 7;*/
+        
+    }
+    
 /*------------------------------------------------------------------------------------------------------------------------*/
    //email address validation
     function emailValidation($your_email){
