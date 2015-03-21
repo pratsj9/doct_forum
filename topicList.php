@@ -1,3 +1,18 @@
+<?php
+    include 'include/core.php';
+    $myList = "topics";
+    $listId = "all";
+    $headName = "<h1>Recent Topics</h1>";
+    if($_SERVER['REQUEST_METHOD']=="GET"){
+        if(isset($_GET['cat_id'])){
+            //echo "category call";
+            $myList = "topics";
+            $listId = $_GET['cat_id'];
+            $headName = "<h1><strong>".trim($_GET['cat_name'])."</h1></strong>";
+        }
+    }
+    //echo "</br> ".$myList." ".$listId;
+?>
 <html>
     <head>
         <title>Topic Name: </title>
@@ -8,12 +23,8 @@
     <body>
         <div class="box">
             <div class="content">
-             <h1>New Diseases</h1>
-             <table class="tab">
-             <tr><th class="one">Topic</th><th class="two">Auther</th><th class="three">Posts</th></tr>
-             <tr><td>Flue </td> <td>2</td> <td>6</td> </tr>
-             <tr><td>Asthama</td> <td>3</td> <td>16</td> </tr>
-             <tr><td>Hiv</td> <td>12</td> <td>60</td> </tr>
+             <?php fetchList($myList,$listId,$headName);?>
+             
              </table>
             </div>
         </div>

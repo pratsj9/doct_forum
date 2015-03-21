@@ -2,7 +2,10 @@
 include 'include/core.php';
 ?>
 <html>
-  <head><title>Doctors Forum</title></head>
+  <head>
+    <title>Doctors Forum</title>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+  </head>
   <body>
     <div class="box">
       <div class="content">
@@ -10,9 +13,9 @@ include 'include/core.php';
         <table class="tab">
           <tr><th class="one">Category</th><th class="two">Topics</th><th class="three">Posts</th></tr>
           <?php
-            fetchList("category","all");
+            fetchList("category","all","");
             
-          ?>
+          ?>          
         </table>
       </div>
     </div>

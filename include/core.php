@@ -98,15 +98,20 @@
             $conn->close();
     
     }
-    function fetchList($myList,$listId){
+    function fetchList($myList,$listId,$headName){
         $sql_query = "";
         $conn = dbConnect();
+        $tableHeader = "<table class=\"tab\">
+                        <tr><th class=\"one\">Topic</th><th class=\"two\">Auther</th><th class=\"three\">Posts</th></tr>";
+        /*showing category on main page...
+         *
+        */
         if($myList=="category" && $listId=="all"){
             $sql_query = "SELECT * FROM categories";
             $resultSet = $conn->query($sql_query);
             if($resultSet->num_rows > 0){
                 while($row = $resultSet->fetch_assoc()){
-                    echo "<tr><td>".$row['cat_name']."</br>
+                    echo "<tr><td><a href=\"topicList.php?cat_id=".$row['cat_id']."&cat_name=".$row['cat_name']."\">".$row['cat_name']."</br>
                           <span class=\"desc\">".$row['cat_description']."</span></td>
                           <td>2</td> <td>6</td>
                           </tr>";
@@ -115,6 +120,29 @@
                 return;
             }
         }
+        elseif($myList=="topics"){
+            //echo "<br> You came a long way into the TOPICS";
+            if($listId == "all"){
+                $sql_query = "SELECT * FROM topics";
+            }
+            else{
+                $sql_query = "SELECT * FROM `topics` WHERE category_id = '$listId'";
+            }
+            $resultSet = $conn->query($sql_query);
+            echo $headName;
+            echo $tableHeader;
+            if($resultSet->num_rows > 0){
+                    while($row = $resultSet->fetch_assoc()){
+                        echo "<tr><td>".$row['topic_title']."</br>
+                        <span class=\"desc\">".$row['topic_description']."</span></td></tr>";
+                    }
+            }
+          //  echo "</br> ".$myList." ".$listId." ".$resultSet->num_rows;
+            //<tr><td>Hiv</td> <td>12</td> <td>60</td> </tr>
+            $conn->close();
+            return;
+        }
+        
     }
     
     function makeCategory($cat_name,$cat_description){
@@ -124,6 +152,9 @@
         dbInsert($conn,$sql_query);
         $conn->close();
     }
+    /*INSERT INTO `forum`.`topics` (`topic_id`, `topic_title`, `topic_description`, `category_id`, `topic_auther`)
+     *VALUES (NULL, 'this g', 'this ia g', '8', 'abc');
+    */
 /*------------------------------------------------------------------------------------------------------------------------*/
    //email address validation
     function emailValidation($your_email){
