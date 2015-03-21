@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 19, 2015 at 02:27 PM
+-- Generation Time: Mar 21, 2015 at 05:43 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -32,15 +32,19 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `cat_description` varchar(250) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `categories`
+-- Table structure for table `topics`
 --
 
-INSERT INTO `categories` (`cat_id`, `cat_name`, `cat_description`) VALUES
-(6, 'Alzheimer', 'widely spread disease'),
-(7, 'Ebola', 'New Generation Virus'),
-(8, 'HIV / AIDS', 'Humans Gone Careless !!!'),
-(9, 'Health Care', 'take care of your health');
+CREATE TABLE IF NOT EXISTS `topics` (
+`topic_id` int(8) NOT NULL,
+  `topic_title` varchar(255) NOT NULL,
+  `topic_description` varchar(255) NOT NULL,
+  `category_id` int(8) NOT NULL,
+  `topic_auther` varchar(30) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -57,14 +61,6 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`user_id`, `user_name`, `user_pass`, `user_email`, `user_level`) VALUES
-(17, 'admin', 'root', 'abc@admin.com', 1),
-(16, 'foo', 'pass', 'foo.bar@foo.po', 0);
-
---
 -- Indexes for dumped tables
 --
 
@@ -72,7 +68,13 @@ INSERT INTO `users` (`user_id`, `user_name`, `user_pass`, `user_email`, `user_le
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
- ADD PRIMARY KEY (`cat_id`), ADD UNIQUE KEY `cat_id` (`cat_id`);
+ ADD PRIMARY KEY (`cat_id`);
+
+--
+-- Indexes for table `topics`
+--
+ALTER TABLE `topics`
+ ADD PRIMARY KEY (`topic_id`), ADD KEY `category_id` (`category_id`);
 
 --
 -- Indexes for table `users`
@@ -90,10 +92,25 @@ ALTER TABLE `users`
 ALTER TABLE `categories`
 MODIFY `cat_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
+-- AUTO_INCREMENT for table `topics`
+--
+ALTER TABLE `topics`
+MODIFY `topic_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
 MODIFY `user_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `topics`
+--
+ALTER TABLE `topics`
+ADD CONSTRAINT `topics_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`cat_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
