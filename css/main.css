@@ -35,7 +35,7 @@ h1{
   text-align:center;
   font-size: 25px;
   color: #414848;
-  width: 100%;
+  width: 90%;
 }
 th,tr,td{
   border: 2px solid black;
@@ -109,4 +109,14 @@ th{
 .btn:active{
   background:#303030;
   color:red;
+}
+/*Making Update icons boderless... and their background transperent*/
+.icons{
+    color: blue;
+    font-size: small;
+    border: none;
+}
+button{
+    background: #f3f3f3;
+    cursor: pointer;
 }

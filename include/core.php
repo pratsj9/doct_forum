@@ -111,10 +111,31 @@
             $resultSet = $conn->query($sql_query);
             if($resultSet->num_rows > 0){
                 while($row = $resultSet->fetch_assoc()){
-                    echo "<tr><td><a href=\"topicList.php?cat_id=".$row['cat_id']."&cat_name=".$row['cat_name']."\">".$row['cat_name']."</br>
-                          <span class=\"desc\">".$row['cat_description']."</span></td>
-                          <td>2</td> <td>6</td>
-                          </tr>";
+                    
+                    echo "<tr> 
+                    <td><a href=\"topicList.php?cat_id=".$row['cat_id']."&cat_name=".$row['cat_name']."\">".$row['cat_name']."</br>
+                    <span class=\"desc\">".$row['cat_description']."</span></td>
+                   
+                    <td>2</td>
+                    <td>6</td>
+                   
+                    <td class=\"icons\" >
+                    <form method=\"post\" action=\"update.php\">
+                            <input type=\"hidden\" name=\"id\" value=\"".$row['cat_id']."\">
+                            <input type=\"hidden\" name=\"type\" value=\"categories\">
+                           <button type=\"submit\" class=\"fa fa-pencil fa-1g icons\" ></button>
+                    </form>
+                    </td>
+                    
+                    </tr>";
+                    /*This populates Home menu With Main Categories
+                     *1.Category name with hyperlink to their Topics
+                     *2.Topic Count
+                     *3.Post Count
+                     *4.Icon button to Update / delete these Categories
+                     *note: button is using font_Awesome classes to represent Button as ICON ,
+                     *matching Button BG color to DIV color
+                    */
                 }
                 $conn->close();
                 return;
@@ -126,6 +147,7 @@
                 $sql_query = "SELECT * FROM topics";
             }
             else{
+                /*select Topics who's category_id is x*/
                 $sql_query = "SELECT * FROM `topics` WHERE category_id = '$listId'";
             }
             $resultSet = $conn->query($sql_query);
