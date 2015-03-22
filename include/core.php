@@ -196,4 +196,13 @@
         else
             return false;
     }
+    
+    function isLogged(){
+        if(isset($_SESSION['user_name'])){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 ?>

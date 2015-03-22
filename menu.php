@@ -25,8 +25,6 @@ session_start();
       <nav>
         <ul class="menu">
           <li><a href="index.php"><span>Home</span></a></li>
-          <li><a href="topicList.php"><span>Topics</span></a></li>
-          <li><a href="#"><span>recent </span></a></li>
           <li><a href="#"><span>About</span></a></li>
           <li><a href="#"><span>Contacts</span></a></li>
           <li><a href="#">

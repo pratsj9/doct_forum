@@ -30,7 +30,17 @@
             </div>
         </div>
         
-        <div class="box">
+        <?php
+        if(!isLogged()){
+            /*hiding Create Topic Div
+             *if, user is not logged in
+            */
+        ?>
+        <style type="text/css"> #usercheck{ display: none; }</style>
+        <?php
+        }
+        ?>
+        <div id="usercheck" class="box">
             <div class="content">
                 <h1>Start New Topic</h1>
                 <form method="post"action="createTopic.php"">
