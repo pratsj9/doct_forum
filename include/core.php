@@ -101,8 +101,7 @@
     function fetchList($myList,$listId,$headName){
         $sql_query = "";
         $conn = dbConnect();
-        $tableHeader = "<table class=\"tab\">
-                        <tr><th class=\"one\">Topic</th><th class=\"two\">Auther</th><th class=\"three\">Posts</th></tr>";
+        
         /*showing category on main page...
          *
         */
@@ -141,8 +140,17 @@
                 return;
             }
         }
+        
         elseif($myList=="topics"){
-            //echo "<br> You came a long way into the TOPICS";
+            /*listID is cat_id of that topic
+            */
+            $tableHeader = "<table class=\"tab\">
+                           <tr><th class=\"one\">Topic</th><th class=\"two\">Auther</th><th class=\"three\">Posts</th></tr>";
+            $topic_title = "";
+            $topic_description = "";
+            $topic_auther =  "";
+            $topic_id ="";
+            
             if($listId == "all"){
                 $sql_query = "SELECT * FROM topics";
             }
@@ -150,20 +158,62 @@
                 /*select Topics who's category_id is x*/
                 $sql_query = "SELECT * FROM `topics` WHERE category_id = '$listId'";
             }
+            
             $resultSet = $conn->query($sql_query);
+            
             echo $headName;
             echo $tableHeader;
+            
             if($resultSet->num_rows > 0){
                     while($row = $resultSet->fetch_assoc()){
-                        echo "<tr><td>".$row['topic_title']."</br>
-                        <span class=\"desc\">".$row['topic_description']."</span></td>
-                        <td>".$row['topic_auther']."</td></tr>";
+                        $topic_title =  $row['topic_title'];
+                        $topic_description = $row['topic_description'];
+                        $topic_auther =$row['topic_auther'];
+                        $topic_id = $row['topic_id'];
+                        
+                        $topic_post_link = "<a href=\"posts.php?topic_id=".$topic_id."&topic_title=".$topic_title."\"><span>".$topic_title."</span></a>";
+                        
+                        echo "<tr>
+                        <td>".$topic_post_link."</br>
+                        <span class=\"desc\">".$topic_description."</span></td>
+                        <td>".$topic_auther."</td>
+                        </tr>";
                     }
             }
           //  echo "</br> ".$myList." ".$listId." ".$resultSet->num_rows;
             //<tr><td>Hiv</td> <td>12</td> <td>60</td> </tr>
             $conn->close();
             return;
+        }
+        
+        elseif($myList == "posts"){
+            /**/
+            $tableHeader = "<table class=\"tab\">
+                           <tr><th class=\"one\">Comments</th><th class=\"two\">Auther</th>
+                           <th class=\"three\">Date</th></tr>";
+            echo $headName;
+            echo $tableHeader;
+            
+            $sql_query = "SELECT * FROM posts WHERE topic_id = '$listId'";
+            echo $sql_query;
+            $resultSet = $conn->query($sql_query);
+            if($resultSet->num_rows > 0){
+                
+                while($row = $resultSet->fetch_assoc()){
+                    $post = $row['post_content'];
+                    $auther = $row['post_auther'];
+                    $p_date = $row['post_date'];
+                    
+                    echo "<tr>
+                                <td>".$post."</td>
+                                <td>".$auther."</td>
+                                <td>".$p_date."</td>
+                          </tr>";
+                }
+                $conn->close();
+                return;
+            }
+            
         }
         
     }

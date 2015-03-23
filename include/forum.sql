@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 21, 2015 at 05:43 PM
+-- Generation Time: Mar 23, 2015 at 02:48 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -30,7 +30,21 @@ CREATE TABLE IF NOT EXISTS `categories` (
 `cat_id` int(8) NOT NULL,
   `cat_name` varchar(50) NOT NULL,
   `cat_description` varchar(250) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
+
+CREATE TABLE IF NOT EXISTS `posts` (
+`post_id` int(8) NOT NULL,
+  `topic_id` int(8) NOT NULL,
+  `post_content` text NOT NULL,
+  `post_auther` varchar(50) NOT NULL,
+  `post_date` date NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -44,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `topics` (
   `topic_description` varchar(255) NOT NULL,
   `category_id` int(8) NOT NULL,
   `topic_auther` varchar(30) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -71,6 +85,12 @@ ALTER TABLE `categories`
  ADD PRIMARY KEY (`cat_id`);
 
 --
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+ ADD PRIMARY KEY (`post_id`), ADD KEY `topic_id` (`topic_id`);
+
+--
 -- Indexes for table `topics`
 --
 ALTER TABLE `topics`
@@ -90,12 +110,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-MODIFY `cat_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+MODIFY `cat_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+MODIFY `post_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `topics`
 --
 ALTER TABLE `topics`
-MODIFY `topic_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+MODIFY `topic_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `users`
 --
@@ -104,6 +129,12 @@ MODIFY `user_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `posts`
+--
+ALTER TABLE `posts`
+ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`topic_id`) REFERENCES `topics` (`topic_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `topics`
