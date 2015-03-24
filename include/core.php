@@ -108,15 +108,17 @@
         if($myList=="category" && $listId=="all"){
             $sql_query = "SELECT * FROM categories";
             $resultSet = $conn->query($sql_query);
+            $cat_id = "";
+            $count = "";
             if($resultSet->num_rows > 0){
                 while($row = $resultSet->fetch_assoc()){
-                    
+                    $cat_id = $row['cat_id'];
+                    $count = getCount("topics",$cat_id);
                     echo "<tr> 
-                    <td><a href=\"topicList.php?cat_id=".$row['cat_id']."&cat_name=".$row['cat_name']."\">".$row['cat_name']."</br>
+                    <td><a href=\"topicList.php?cat_id=".$cat_id."&cat_name=".$row['cat_name']."\">".$row['cat_name']."</br>
                     <span class=\"desc\">".$row['cat_description']."</span></td>
                    
-                    <td>2</td>
-                    <td>6</td>
+                    <td>".$count."</td>
                    
                     <td class=\"icons\" >
                     <form method=\"post\" action=\"update.php\">
@@ -150,6 +152,7 @@
             $topic_description = "";
             $topic_auther =  "";
             $topic_id ="";
+            $count = 0;
             
             if($listId == "all"){
                 $sql_query = "SELECT * FROM topics";
@@ -170,6 +173,7 @@
                         $topic_description = $row['topic_description'];
                         $topic_auther =$row['topic_auther'];
                         $topic_id = $row['topic_id'];
+                        $count = getCount("posts",$topic_id);
                         
                         $topic_post_link = "<a href=\"posts.php?topic_id=".$topic_id."&topic_title=".$topic_title."\"><span>".$topic_title."</span></a>";
                         
@@ -177,6 +181,7 @@
                         <td>".$topic_post_link."</br>
                         <span class=\"desc\">".$topic_description."</span></td>
                         <td>".$topic_auther."</td>
+                        <td>".$count."</td>
                         </tr>";
                     }
             }
@@ -229,8 +234,34 @@
         $conn->close();
     }
     // get count of post and comments
-    function getCount($from, $id){
+    function getCount($content, $parent_id){
         /*select count(topic_id) as total from topics where category_id = 7;*/
+        $sql_query = "";
+        $table_name = "";
+        $count = 1;
+        switch($content){
+            case "topics":
+                $table_name = "topics";
+                $sql_query = "select count(*) as total from $table_name where category_id = $parent_id";
+                //select count(*) as total from topics where category_id = 1
+            break;
+        
+            case "posts":
+                $table_name = "posts";
+                $sql_query = "select count(*) as total from $table_name where topic_id = $parent_id";
+            break;
+        }
+        $conn = dbConnect();
+        $resultSet = $conn->query($sql_query);
+        //echo $sql_query;
+        
+        if($resultSet->num_rows > 0){
+            while($row = $resultSet->fetch_assoc()){
+                $count = $row['total'];
+            }
+            $conn->close();
+            return $count;
+        }
         
     }
     
