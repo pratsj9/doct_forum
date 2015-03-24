@@ -7,7 +7,7 @@
                 $topic_title =  $_GET['topic_title'];
                 $topic_id = $_GET['topic_id'];
                 $head_name = "<h1>".$topic_title."</h1>"; 
-                echo "WElcome TO Posts ".$topic_title." ".$topic_id;
+                //echo "WElcome TO Posts ".$topic_title." ".$topic_id;
         }
     }
 ?>
@@ -21,6 +21,26 @@
     <body>
         <div class="box">
             <div class="content">
+                <style type = "text/css">
+                    th{
+                        background: #00bcd4;
+                        text-shadow: none;
+                        font-size: 28px;
+                    }
+                    td{
+                        padding: 5px 5px;/*left right text margin*/
+                        text-align: justify;
+                        font-family: 'Ubuntu Mono', sans-serif;
+                        
+                    }
+                    .dt{
+                        font-size: 12px;
+                    }
+                    .auther{
+                        font-size: 15px;
+                    }
+                    
+                </style>
                 <?php
                     fetchList("posts",$topic_id,$head_name);
                 ?>

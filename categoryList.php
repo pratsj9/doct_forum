@@ -10,6 +10,14 @@ include 'include/core.php';
     <div class="box">
       <div class="content">
       <h1>Welcome to Doctor's Forum</h1>
+      <style type = "text/css">
+                    th{
+                        background: #d50000;
+                        text-shadow: none;
+                        color: #f3f3f3;
+                        padding: 5px 5px;
+                    }
+                </style>
         <table class="tab">
           <tr><th class="one">Category</th><th class="two">Topics</th><th class="three">Posts</th></tr>
           <?php

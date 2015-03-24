@@ -189,13 +189,16 @@
         elseif($myList == "posts"){
             /**/
             $tableHeader = "<table class=\"tab\">
-                           <tr><th class=\"one\">Comments</th><th class=\"two\">Auther</th>
-                           <th class=\"three\">Date</th></tr>";
+                           <tr>
+                           <th class=\"three\">Date</th>
+                           <th class=\"two\">Auther</th>
+                           <th class=\"one\">Comments</th>
+                           </tr>";
             echo $headName;
             echo $tableHeader;
             
             $sql_query = "SELECT * FROM posts WHERE topic_id = '$listId'";
-            echo $sql_query;
+            //echo $sql_query;
             $resultSet = $conn->query($sql_query);
             if($resultSet->num_rows > 0){
                 
@@ -205,9 +208,9 @@
                     $p_date = $row['post_date'];
                     
                     echo "<tr>
-                                <td>".$post."</td>
-                                <td>".$auther."</td>
-                                <td>".$p_date."</td>
+                                <td class=\"dt\">".$p_date."</td>
+                                <td class=\"auther\">".$auther."</td>
+                                <td>".$post."</td>  
                           </tr>";
                 }
                 $conn->close();
