@@ -102,9 +102,7 @@
         $sql_query = "";
         $conn = dbConnect();
         
-        /*showing category on main page...
-         *
-        */
+/*showing category on main page...----------------------------------------------------------------------------------------*/
         if($myList=="category" && $listId=="all"){
             $sql_query = "SELECT * FROM categories";
             $resultSet = $conn->query($sql_query);
@@ -122,7 +120,7 @@
                    
                     <td class=\"icons\" >
                     <form method=\"post\" action=\"update.php\">
-                            <input type=\"hidden\" name=\"id\" value=\"".$row['cat_id']."\">
+                            <input type=\"hidden\" name=\"id\" value=\"".$cat_id."\">
                             <input type=\"hidden\" name=\"type\" value=\"categories\">
                            <button type=\"submit\" class=\"fa fa-pencil fa-1g icons\" ></button>
                     </form>
@@ -142,7 +140,7 @@
                 return;
             }
         }
-        
+/*-----------------------------TOPIC LIST------------------------------------------------*/        
         elseif($myList=="topics"){
             /*listID is cat_id of that topic
             */
@@ -191,6 +189,7 @@
             return;
         }
         
+/*---------------------------------POST LIST------------------------------------------------------------------------------*/        
         elseif($myList == "posts"){
             /**/
             $tableHeader = "<table class=\"tab\">
