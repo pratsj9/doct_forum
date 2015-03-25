@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 24, 2015 at 01:34 PM
+-- Generation Time: Mar 25, 2015 at 12:32 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
 --
 
 INSERT INTO `categories` (`cat_id`, `cat_name`, `cat_description`) VALUES
-(1, 'General Discussion', 'off-topics');
+(1, 'General Discussion', 'xxx');
 
 -- --------------------------------------------------------
 
@@ -51,21 +51,23 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `post_content` text NOT NULL,
   `post_auther` varchar(50) NOT NULL,
   `post_date` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `posts`
 --
 
 INSERT INTO `posts` (`post_id`, `topic_id`, `post_content`, `post_auther`, `post_date`) VALUES
-(1, 1, 'Thats a great idea ', 'rnztx', '2015-03-24'),
-(2, 1, 'this is a long text .. this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..this is a long text ..', 'rnztx', '2015-03-24'),
+(1, 1, 'Boom Clap', 'rnztx', '2015-03-24'),
+(2, 1, 'short One now', 'rnztx', '2015-03-24'),
 (3, 1, 'is it working', 'admin', '2015-03-24'),
 (4, 2, 'Whats wrong with this', 'admin', '2015-03-24'),
 (5, 2, 'When i thought Comments are not working... ', 'admin', '2015-03-24'),
 (6, 2, 'its is Working', 'admin', '2015-03-24'),
 (7, 3, 'Sunil is Here', 'admin', '2015-03-24'),
-(8, 4, 'comment no 2', 'admin', '2015-03-24');
+(8, 4, 'comment no 2', 'admin', '2015-03-24'),
+(9, 6, 'I am Foo', 'foo', '2015-03-25'),
+(10, 1, 'new Comment', 'rnztx', '2015-03-25');
 
 -- --------------------------------------------------------
 
@@ -79,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `topics` (
   `topic_description` varchar(255) NOT NULL,
   `category_id` int(8) NOT NULL,
   `topic_auther` varchar(30) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `topics`
@@ -87,10 +89,11 @@ CREATE TABLE IF NOT EXISTS `topics` (
 
 INSERT INTO `topics` (`topic_id`, `topic_title`, `topic_description`, `category_id`, `topic_auther`) VALUES
 (1, 'Free wifi in Hospitals', 'Every Hospital should be offering free wifi, so it will be helpful for family of patients', 1, 'rnztx'),
-(2, 'ban eating on Roads', 'aaa', 1, 'rnztx'),
+(2, 'ban eating on Roads', 'rrr', 1, 'rnztx'),
 (3, 'Smoking In Colleges', 'good or bad', 1, 'rnztx'),
 (4, 'reason for near-sightedness', 'all time indoor', 1, 'rnztx'),
-(5, 'Future of cars', 'is Electrnics', 1, 'admin');
+(5, 'Future of cars', 'is Electrnics', 1, 'admin'),
+(6, 'Foo', 'i am Foo', 1, 'foo');
 
 -- --------------------------------------------------------
 
@@ -156,12 +159,12 @@ MODIFY `cat_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-MODIFY `post_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `post_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `topics`
 --
 ALTER TABLE `topics`
-MODIFY `topic_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `topic_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `users`
 --
