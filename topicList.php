@@ -18,7 +18,9 @@
 <html>
     <head>
         <title>Topic Name: </title>
-        <?php include 'menu.php'?>
+        <?php include 'menu.php';
+              setCheckPoint();   
+        ?>
         <link rel="stylesheet" type="html/css" href="css/main.css" >
     </head>
     

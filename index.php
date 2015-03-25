@@ -14,9 +14,9 @@
             /*hiding Create Topic Div
              *if, user is not logged in
             */
-        ?>
-        <style type="text/css"> .icons{ display: none; }</style>
-        <?php
+            ?>
+            <style type="text/css"> .icons{ display: none; }</style>
+            <?php
         }
     ?>
     <?php include 'categoryList.php'?>

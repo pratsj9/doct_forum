@@ -10,12 +10,15 @@
         $col_id = "";
         
         if(!isset($_GET['type']))
-            redirect("index.php");
+            redirect(getCheckPoint());
             
         $type = $_GET['type'];
         $id = $_GET['id'];
         $name = $_GET['name'];
         
+        if(empty($name) || empty($type))
+            redirect(getCheckPoint());
+            
         if(isset($_GET['description']))//no description in comments.. so 
             $description = $_GET['description'];
         
@@ -28,6 +31,14 @@
                 $col_id = "cat_id";
                 $sql_query = "update $table_name set $col_name='$name', $col_description='$description' where $col_id=$id";
             break;
+        
+            case "topics":
+                $col_name = "topic_title";
+                $col_description = "topic_description";
+                $table_name = "topics";
+                $col_id = "topic_id";
+                $sql_query = "update $table_name set $col_name='$name', $col_description='$description' where $col_id=$id";
+            break;
         }
         
         echo $sql_query;
@@ -35,7 +46,7 @@
         dbInsert($conn,$sql_query);
         $conn->close();
         
-        //redirect(getCheckPoint());
+        redirect(getCheckPoint());
         
         /*select cat_name, cat_description from categories where cat_id = 1*/
     }

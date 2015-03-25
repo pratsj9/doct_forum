@@ -188,8 +188,23 @@
                         <td>".$topic_post_link."</br>
                         <span class=\"desc\">".$topic_description."</span></td>
                         <td>".$topic_auther."</td>
-                        <td>".$count."</td>
-                        </tr>";
+                        <td>".$count."</td>";
+                        
+                        /*if that topic auther is logged, only then EDIT is Shown*/
+                        if(isThisUserLogged($topic_auther)){
+                            echo "
+                            <td class=\"icons\" >
+                            <form method=\"post\" action=\"update.php\">
+                                <input type=\"hidden\" name=\"id\" value=\"".$topic_id."\">
+                                <input type=\"hidden\" name=\"name\" value=\"".$topic_title."\">
+                                <input type=\"hidden\" name=\"description\" value=\"".$topic_description."\">
+                                <input type=\"hidden\" name=\"type\" value=\"topics\">
+                                <button type=\"submit\" class=\"fa fa-pencil fa-1g icons\" ></button>
+                            </form>
+                            </td>";
+                        }
+                    
+                        echo "</tr>";
                     }
             }
           //  echo "</br> ".$myList." ".$listId." ".$resultSet->num_rows;
@@ -318,6 +333,19 @@
         else{
             return false;
         }
+    }
+    
+    function isThisUserLogged($user){
+        if(isset($_SESSION['user_name'])){
+            if($user == $_SESSION['user_name']){
+                return true;
+            }
+            else
+                return false;
+        }
+        else
+            return false;
+        
     }
     
     function getCurruntPageUrl(){

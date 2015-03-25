@@ -20,6 +20,7 @@ session_start();
 <html>
   <head>
     <link rel="stylesheet" type="html/css" href="css/menu.css" >
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
   </head>
   <body>
    <div id="wrapper">
