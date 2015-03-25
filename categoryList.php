@@ -1,6 +1,4 @@
-<?php
-include 'include/core.php';
-?>
+
 <html>
   <head>
     <title>Doctors Forum</title>

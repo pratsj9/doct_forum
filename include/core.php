@@ -108,19 +108,28 @@
             $resultSet = $conn->query($sql_query);
             $cat_id = "";
             $count = "";
+            $cat_name = "";
+            $cat_description = "";
+            
             if($resultSet->num_rows > 0){
                 while($row = $resultSet->fetch_assoc()){
                     $cat_id = $row['cat_id'];
+                    $cat_name = $row['cat_name'];
+                    $cat_description = $row['cat_description'];
                     $count = getCount("topics",$cat_id);
+        
+                    
                     echo "<tr> 
-                    <td><a href=\"topicList.php?cat_id=".$cat_id."&cat_name=".$row['cat_name']."\">".$row['cat_name']."</br>
-                    <span class=\"desc\">".$row['cat_description']."</span></td>
+                    <td><a href=\"topicList.php?cat_id=".$cat_id."&cat_name=".$cat_name."\">".$cat_name."</br>
+                    <span class=\"desc\">".$cat_description."</span></td>
                    
                     <td>".$count."</td>
                    
                     <td class=\"icons\" >
                     <form method=\"post\" action=\"update.php\">
                             <input type=\"hidden\" name=\"id\" value=\"".$cat_id."\">
+                            <input type=\"hidden\" name=\"name\" value=\"".$cat_name."\">
+                            <input type=\"hidden\" name=\"description\" value=\"".$cat_description."\">
                             <input type=\"hidden\" name=\"type\" value=\"categories\">
                            <button type=\"submit\" class=\"fa fa-pencil fa-1g icons\" ></button>
                     </form>
@@ -309,5 +318,17 @@
         else{
             return false;
         }
+    }
+    
+    function getCurruntPageUrl(){
+        return basename($_SERVER['REQUEST_URI']);
+    }
+    
+    function setCheckPoint(){
+        $_SESSION['check_point'] = getCurruntPageUrl();
+    }
+    
+    function getCheckPoint(){
+        return $_SESSION['check_point'];
     }
 ?>
