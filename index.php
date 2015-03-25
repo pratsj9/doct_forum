@@ -9,5 +9,15 @@
     
     <link rel="stylesheet" type="html/css" href="css/main.css" >
 </head>
+     <?php
+        if(!isSu()){
+            /*hiding Create Topic Div
+             *if, user is not logged in
+            */
+        ?>
+        <style type="text/css"> .icons{ display: none; }</style>
+        <?php
+        }
+    ?>
     <?php include 'categoryList.php'?>
 </html>
