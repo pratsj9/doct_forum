@@ -14,8 +14,10 @@
 <html>
     <head>
          <title>Posts </title>
-        <?php include 'menu.php'?>
-        <?php include 'include/core.php'?>
+        <?php include 'menu.php';
+              include 'include/core.php';
+              setCheckPoint();
+              ?>
         <link rel="stylesheet" type="html/css" href="css/main.css" >
     </head>
     <body>

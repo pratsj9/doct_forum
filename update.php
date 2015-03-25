@@ -39,6 +39,13 @@
                 $col_id = "topic_id";
                 $sql_query = "update $table_name set $col_name='$name', $col_description='$description' where $col_id=$id";
             break;
+        
+            case "posts":
+                $col_name = "post_content";
+                $table_name = "posts";
+                $col_id = "post_id";
+                $sql_query = "update $table_name set $col_name='$name' where $col_id=$id";
+            break;
         }
         
         echo $sql_query;
@@ -56,10 +63,17 @@
         $id = trim($_POST['id']);
         $type = trim($_POST['type']);
         $name = $_POST['name'];
-        $description = $_POST['description'];
-        $input_message = "<input class=\"field\" type=\"text\" name=\"name\" value=\"$name\"></br>".
-                         "<input class=\"field\" type=\"text\" name=\"description\" value=\"$description\">".
-                         "<input class=\"field\" type=\"hidden\" name=\"id\" value=\"$id\">".
+        
+        if(isset($_GET['description']))
+            $description = $_POST['description'];
+            
+        $input_message = "<input class=\"field\" type=\"text\" name=\"name\" value=\"$name\"></br>";
+        
+        if(isset($_GET['description']))
+        $input_message = $input_message."<input class=\"field\" type=\"text\" name=\"description\" value=\"$description\">";
+        
+        
+        $input_message = $input_message."<input class=\"field\" type=\"hidden\" name=\"id\" value=\"$id\">".
                          "<input class=\"field\" type=\"hidden\" name=\"type\" value=\"$type\">";
         
         

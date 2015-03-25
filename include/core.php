@@ -234,12 +234,25 @@
                     $post = $row['post_content'];
                     $auther = $row['post_auther'];
                     $p_date = $row['post_date'];
+                    $id = $row['post_id'];
                     
                     echo "<tr>
                                 <td class=\"dt\">".$p_date."</td>
                                 <td class=\"auther\">".$auther."</td>
-                                <td>".$post."</td>  
-                          </tr>";
+                                <td>".$post."</td>";
+                                
+                    if(isThisUserLogged($auther)){
+                            echo "
+                            <td class=\"icons\" >
+                            <form method=\"post\" action=\"update.php\">
+                                <input type=\"hidden\" name=\"id\" value=\"".$id."\">
+                                <input type=\"hidden\" name=\"name\" value=\"".$post."\">
+                                <input type=\"hidden\" name=\"type\" value=\"posts\">
+                                <button type=\"submit\" class=\"fa fa-pencil fa-1g icons\" ></button>
+                            </form>
+                            </td>";
+                    }
+                    echo "</tr>";
                 }
                 $conn->close();
                 return;
