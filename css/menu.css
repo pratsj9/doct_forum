@@ -51,7 +51,7 @@
 .menu > li {
   float: left;
   height: 100%;
-  width: calc((100%) / 4); /*width of each menu elements.. i.e 6 menu elements*/
+  width: calc((100%) / 5); /*width of each menu elements.. i.e 6 menu elements*/
 }
 
 
