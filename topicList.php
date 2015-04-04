@@ -23,7 +23,6 @@
         ?>
         <link rel="stylesheet" type="html/css" href="css/main.css" >
     </head>
-    
     <body>
         <div class="box">
             <div class="content">
@@ -45,7 +44,7 @@
         <div id="usercheck" class="box">
             <div class="content">
                 <h1>Start New Topic</h1>
-                <form method="post"action="createTopic.php"">
+                <form method="post" action="createTopic.php"">
                 
                     <input class="field" type="text" name="topic_name" placeholder="topic name"><br>
                     <textarea class="field" type="text" name="topic_desc"

@@ -28,7 +28,7 @@ session_start();
         <ul class="menu">
           <li><a href="index.php"><span>Home</span></a></li>
           <li><a href="#"><span>About</span></a></li>
-          <li><a href="#"><span>Contacts</span></a></li>
+          <li><a href="eyetest.php"><span>Eye Test</span></a></li>
           <li><a href="#">
           <span><?php
                   if(isset($_SESSION['user_name'])){
