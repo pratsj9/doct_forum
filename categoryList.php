@@ -19,6 +19,7 @@
         <table class="tab">
           <tr><th class="one">Category</th><th class="two">Topics</th></tr>
           <?php
+          
             fetchList("category","all","");
             
           ?>          

@@ -366,6 +366,7 @@
     }
     
     function setCheckPoint(){
+        $_SESSION['check_point'] = "";
         $_SESSION['check_point'] = getCurruntPageUrl();
     }
     

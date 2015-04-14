@@ -32,7 +32,7 @@
                         $message= "</br> <h1>Welcome ".$username."
                                    </br> Please Login</h1></br>";
                         $conn->close();
-                        redirect("http://localhost/forum/login.php?message=".$message);
+                        redirect("login.php");
                   }
                   else{
                     $message = $message." UserName Already Taken..!";

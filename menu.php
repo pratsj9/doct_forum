@@ -15,6 +15,7 @@ session_start();
         else
             return false;
     }
+    //echo basename($_SERVER['REQUEST_URI']);
 ?>
 
 <html>

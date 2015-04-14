@@ -24,7 +24,7 @@
                     if(isUserAuthenticated($emailid,$password)){
                         //$message= "</br> BINGOOOO......";
                         /*Now we should Redirect to Home Page */
-                      redirect(getCheckPoint());
+                      redirect("index.php");
           
                     }
                     else{
