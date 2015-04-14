@@ -21,7 +21,8 @@
         }
         else{
           // echo "</br> db Connected: ".$username."@".$host.":".$database;
-            return $conn;
+            //return $conn;
+	    return null;
         }
     }
     
