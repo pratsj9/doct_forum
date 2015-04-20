@@ -341,6 +341,7 @@
     }
     
     function isLogged(){
+        
         if(isset($_SESSION['user_name'])){
             return true;
         }

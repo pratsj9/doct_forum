@@ -1,12 +1,16 @@
 <?php
-//session_start();
+include 'menu.php';
+include('include/core.php');
+    if(!isLogged()){
+	redirect("login.php?message=Please Login to access Shopping");	
+    }
 include_once("config.php");
 
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-<?php include 'menu.php'; ?>
+<?php  ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Shopping Cart</title>
 
