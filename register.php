@@ -10,14 +10,15 @@
   $message = "";
     
   if($_SERVER['REQUEST_METHOD']=="POST"){
-    $username = $emailid = $password ="";
+    $username = $emailid = $password = $gender ="";
     
     $username = trim($_POST['username']);
     $emailid = trim($_POST['email']); //lets avoid extra spaces..
     $password = trim($_POST['password']);
-    
+    $gender = $_POST['gender'];
+    $dob = $_POST['dob'];
     //check if they are not blank....
-    if(!empty($username) && !empty($emailid) && !empty($password)){
+    if(!empty($username) && !empty($emailid) && !empty($password) && !empty($gender) && !empty($dob)){
         //now check valid email..
         if(emailValidation($emailid)){
           //check if email is Already Registered
@@ -28,11 +29,12 @@
                         $conn = dbConnect();
                         $sql_query = "INSERT INTO `users`(`user_name`, `user_pass`, `user_email`)
                         VALUES ('".$username."','".$password."','".$emailid."')";
-                        dbInsert($conn,$sql_query);
+                        //dbInsert($conn,$sql_query);
                         $message= "</br> <h1>Welcome ".$username."
                                    </br> Please Login</h1></br>";
                         $conn->close();
-                        redirect("login.php");
+                        $message = $dob;
+                        //redirect("login.php");
                   }
                   else{
                     $message = $message." UserName Already Taken..!";
@@ -52,15 +54,7 @@
     {
       $message = "<br><h1>All fields are required.</h1>";
     }
-    /*
     
-    $conn = dbConnect();
-    $sql_query = "INSERT INTO `users`(`user_name`, `user_pass`, `user_email`)
-                  VALUES ('".$username."','".$password."','".$emailid."')";
-    dbInsert($conn,$sql_query);
-    $message= "</br> <h1>Welcome ".$username."...</h1></br>";
-    $conn->close();
-    */
   }
 ?> 
 <html>
@@ -78,9 +72,17 @@
       <h1><strong>User Registration</strong></h1>
       
       <form method="post"
-            action="<?php echo $_SERVER['PHP_SELF'];?>">
+            action="<?php echo $_SERVER['PHP_SELF'];?>"
+            id="registrationForm">
           <input class="field" type="text" name="username" placeholder="user name"><br>
           <input class="field" type="text" name="email" placeholder="email id"><br>
+          <select name="gender" class="field" form="registrationForm">
+              <option value="">Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+          </select>
+          <input class="field" type="date" name="dob" placeholder="Date of Birth"><br>
           <input class="field" type="password" name="password" placeholder="password"><br>
           <input class="btn" type="submit" value="Register">
       </form>

@@ -1,6 +1,7 @@
 <?php
-include 'menu.php';
+
 include('include/core.php');
+include 'menu.php';
     if(!isLogged()){
 	redirect("login.php?message=Please Login to access Shopping");	
     }

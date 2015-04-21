@@ -38,6 +38,8 @@ session_start();
                   }
                   else
                     echo "user";
+                  
+                  //setUsername("user");
                 ?>
           </span></a>
             <ul class="sub-menu">

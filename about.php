@@ -1,5 +1,7 @@
 <?php
+include('include/core.php');
 include('menu.php');
+
 ?>
 <html>
     <head>

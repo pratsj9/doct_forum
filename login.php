@@ -24,6 +24,7 @@
                     if(isUserAuthenticated($emailid,$password)){
                         //$message= "</br> BINGOOOO......";
                         /*Now we should Redirect to Home Page */
+                        
                       redirect("index.php");
           
                     }
