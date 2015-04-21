@@ -22,7 +22,7 @@
                     //echo "</br> email Registered";
                     //--------------------------
                     if(isUserAuthenticated($emailid,$password)){
-                        //$message= "</br> BINGOOOO......";
+                        //check if email and password is correct
                         /*Now we should Redirect to Home Page */
                         
                       redirect("index.php");

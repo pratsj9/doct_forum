@@ -27,14 +27,14 @@
                   if(!isUsernameRegistered($username)){
                     //YOU came a long Way....All is Valid
                         $conn = dbConnect();
-                        $sql_query = "INSERT INTO `users`(`user_name`, `user_pass`, `user_email`)
-                        VALUES ('".$username."','".$password."','".$emailid."')";
-                        //dbInsert($conn,$sql_query);
+                        $sql_query = "INSERT INTO `users`(`user_name`, `user_pass`, `user_email`, `user_gender`, `user_dob`)
+                        VALUES ('".$username."','".$password."','".$emailid."','".$gender."','".$dob."')";
+                        dbInsert($conn,$sql_query);
                         $message= "</br> <h1>Welcome ".$username."
                                    </br> Please Login</h1></br>";
                         $conn->close();
-                        $message = $dob;
-                        //redirect("login.php");
+                        //$message = $dob;
+                        redirect("login.php");
                   }
                   else{
                     $message = $message." UserName Already Taken..!";

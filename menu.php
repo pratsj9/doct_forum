@@ -32,33 +32,38 @@ session_start();
           <li><a href="eyetest.php"><span>Eye Test</span></a></li>
           <li><a href="shop.php"><span>Shopping</span></a></li>
           <li><a href="#">
-          <span><?php
-                  if(isset($_SESSION['user_name'])){
-                    echo "hi, ".$_SESSION['user_name'];
-                  }
-                  else
-                    echo "user";
-                  
-                  //setUsername("user");
-                ?>
-          </span></a>
-            <ul class="sub-menu">
-              <?php
-                  if(!isset($_SESSION['user_name'])){
-                    print("<li><a href=\"login.php\">Login</a></li>");
-                    print("<li><a href=\"register.php\">Register</a></li>");
-                  }
-                  else{
-                      if(isSuper()){
-                        //all SupeUser Pages Goes Here....
-                        print("<li><a href=\"createCategory.php\">Create Category</a></li>");
+              <span><?php
+                      if(isset($_SESSION['user_name'])){
+                        echo "hi, ".$_SESSION['user_name'];
                       }
-                    print("<li><a href=\"logout.php\">Logout</a></li>");
-                  }
-              ?>
-              
-            </ul>
+                      else
+                        echo "user";
+                      
+                      //setUsername("user");
+                    ?>
+              </span></a>
+                <ul class="sub-menu">
+                  <?php
+                      if(!isset($_SESSION['user_name'])){
+                        /*if not logged then print these pages*/
+                        print("<li><a href=\"login.php\">Login</a></li>");
+                        print("<li><a href=\"register.php\">Register</a></li>");
+                        
+                      }
+                      else{
+                        /*if logged then show these pages*/
+                          if(isSuper()){
+                            //all SupeUser Pages Goes Here....
+                            print("<li><a href=\"createCategory.php\">Create Category</a></li>");
+                          }
+                        print("<li><a href=\"profile.php\">Profile</a></li>");
+                        print("<li><a href=\"logout.php\">Logout</a></li>");
+                      }
+                  ?>
+                  
+                </ul>
           </li>
+          
         </ul>
       </nav>
     </div>
