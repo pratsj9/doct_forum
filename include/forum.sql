@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 18, 2015 at 04:01 PM
+-- Generation Time: Apr 21, 2015 at 07:03 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -30,14 +30,14 @@ CREATE TABLE IF NOT EXISTS `categories` (
 `cat_id` int(8) NOT NULL,
   `cat_name` varchar(50) NOT NULL,
   `cat_description` varchar(250) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`cat_id`, `cat_name`, `cat_description`) VALUES
-(2, 'General Discussion', 'normal Thigs');
+(3, 'General Discussion', 'Total nonSence');
 
 -- --------------------------------------------------------
 
@@ -52,16 +52,6 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `post_auther` varchar(50) NOT NULL,
   `post_date` date NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `posts`
---
-
-INSERT INTO `posts` (`post_id`, `topic_id`, `post_content`, `post_auther`, `post_date`) VALUES
-(9, 6, 'Free Music, Games', 'admin', '2015-04-14'),
-(10, 6, 'lots of Porno', 'foo', '2015-04-14'),
-(11, 7, '1st', 'foo', '2015-04-14'),
-(12, 7, 'lolllz kiddo', 'rnztx', '2015-04-14');
 
 -- --------------------------------------------------------
 
@@ -102,14 +92,6 @@ CREATE TABLE IF NOT EXISTS `topics` (
   `topic_auther` varchar(30) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `topics`
---
-
-INSERT INTO `topics` (`topic_id`, `topic_title`, `topic_description`, `category_id`, `topic_auther`) VALUES
-(6, 'I want Freee Wifi in Hospitals', '', 2, 'foo'),
-(7, 'free cofee', 'Makes you fresh', 2, 'rnztx');
-
 -- --------------------------------------------------------
 
 --
@@ -121,17 +103,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_name` varchar(30) NOT NULL,
   `user_pass` varchar(255) NOT NULL,
   `user_email` varchar(255) NOT NULL,
-  `user_level` int(8) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+  `user_level` int(8) NOT NULL DEFAULT '0',
+  `user_gender` varchar(8) NOT NULL DEFAULT '-',
+  `user_dob` varchar(12) NOT NULL DEFAULT '-'
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `user_name`, `user_pass`, `user_email`, `user_level`) VALUES
-(17, 'admin', 'root', 'abc@admin.com', 1),
-(16, 'foo', 'pass', 'foo.bar@foo.po', 0),
-(21, 'rnztx', 'pass', 'rohit.karadkar@gmail.com', 0);
+INSERT INTO `users` (`user_id`, `user_name`, `user_pass`, `user_email`, `user_level`, `user_gender`, `user_dob`) VALUES
+(22, 'admin', 'root', 'abc@admin.com', 1, 'male', '1992-12-20'),
+(23, 'RnzTx', 'pass', 'rohit.karadkar@gmail.com', 0, 'male', '0020-02-20');
 
 --
 -- Indexes for dumped tables
@@ -175,7 +158,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-MODIFY `cat_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `cat_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `posts`
 --
@@ -195,7 +178,7 @@ MODIFY `topic_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-MODIFY `user_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+MODIFY `user_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 --
 -- Constraints for dumped tables
 --
