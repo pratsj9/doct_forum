@@ -1,9 +1,9 @@
 <?php
 $currency = 'INR'; //Currency sumbol or code
 
-$database = 'root';
+$database = 'forum';
 $password = 'precious';
-$username = 'forum';
+$username = 'root';
 $host = 'localhost';
 $mysqli = new mysqli($host, $username, $password, $database);
 ?>
