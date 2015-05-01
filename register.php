@@ -77,10 +77,9 @@
           <input class="field" type="text" name="username" placeholder="user name"><br>
           <input class="field" type="text" name="email" placeholder="email id"><br>
           <select name="gender" class="field" form="registrationForm">
-              <option value="">Gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
+              <option value="">Identity</option>
+              <option value="doctor">Doctor</option>
+              <option value="patient">Patient</option>
           </select>
           <input class="field" type="date" name="dob" placeholder="Date of Birth"><br>
           <input class="field" type="password" name="password" placeholder="password"><br>

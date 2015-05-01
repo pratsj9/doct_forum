@@ -46,8 +46,8 @@ $conn->close();
                     <tbody>
                         <tr><td>Username</td><td><?php echo $username;?></td></tr>
                         <tr><td>Email</td><td><?php echo $email;?></td></tr>
-                        <tr><td>Gender</td><td><?php echo $gender;?></td></tr>
-                        <tr><td>Birth Date</td><td><?php echo $dob;?></td></tr>
+                        <tr><td>Identity</td><td><?php echo $gender;?></td></tr>
+                        <tr><td>Date of Birth</td><td><?php echo $dob;?></td></tr>
                     </tbody>
                 </table>
                 </br>

@@ -8,11 +8,10 @@
 ------------------------------------------------------------------------------------------------------*/
     
     function dbConnect(){
-        $host = "localhost";
-        $username = "root";
-        $password = "precious";
-        $database = "forum";
-        
+$host = "localhost";
+$username = "root";
+$password = "precious";
+$database = "forum";
          //global $host, $username, $password, $database;
         $conn = new mysqli($host, $username, $password, $database);
         
